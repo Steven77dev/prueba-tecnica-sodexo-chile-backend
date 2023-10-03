@@ -1,0 +1,172 @@
+openapi: 3.0.1
+info:
+  title: API-Noticias
+  description: APIs de noticias
+  contact:
+    name: Steven Llaja
+    url: https://www.linkedin.com/in/steven-llaja-3a896975/
+    email: steven77dev@gmail.com
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+    description: Generated server url
+paths:
+  "/api/noticias/guardarFavorita":
+    post:
+      tags:
+        - noticias-controller
+      summary: Servicio que guarda la noticia como favorita del usuario
+      description: Guardar noticia
+      operationId: guardarFavorita
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/NoticiasExternas"
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Respuesta"
+  "/api/noticias/favoritas":
+    get:
+      tags:
+        - noticias-controller
+      summary: Servicio para listar las noticias favoritas del usuario
+      description: Listado de noticias favoritas
+      operationId: listarNoticiasFavoritas
+      parameters:
+        - name: titulo
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: ordering
+          in: query
+          required: false
+          schema:
+            type: string
+            default: asc
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Respuesta"
+  "/api/noticias/externas":
+    get:
+      tags:
+        - noticias-controller
+      operationId: listarNoticiasExternas
+      parameters:
+        - name: search
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: ordering
+          in: query
+          required: false
+          schema:
+            type: string
+            default: published_at
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                type: string
+  "/api/noticias/contarFavoritas":
+    get:
+      tags:
+        - noticias-controller
+      summary: Se obtiene el total de noticias favoritas del usuario
+      description: Conteo de noticias favoritas
+      operationId: contarFavoritas
+      parameters:
+        - name: titulo
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int32
+  "/api/noticias/{codigo}":
+    delete:
+      tags:
+        - noticias-controller
+      summary: Se eliminar una noticia favorita del usuario
+      description: Eliminar noticia favorita
+      operationId: eliminarFavorito
+      parameters:
+        - name: codigo
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Respuesta"
+components:
+  schemas:
+    Respuesta:
+      type: object
+      properties:
+        data:
+          type: object
+        mensaje:
+          type: string
+        valido:
+          type: boolean
+    NoticiasExternas:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        title:
+          type: string
+        url:
+          type: string
+        image_url:
+          type: string
+        news_site:
+          type: string
+        summary:
+          type: string
+        published_at:
+          type: string
+        updated_at:
+          type: string
+        featured:
+          type: boolean

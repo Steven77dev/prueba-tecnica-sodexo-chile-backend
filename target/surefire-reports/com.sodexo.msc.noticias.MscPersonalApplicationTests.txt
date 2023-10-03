@@ -1,0 +1,7 @@
+-------------------------------------------------------------------------------
+Test set: com.sodexo.msc.noticias.MscPersonalApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.13 s <<< FAILURE! - in com.sodexo.msc.noticias.MscPersonalApplicationTests
+com.sodexo.msc.noticias.MscPersonalApplicationTests  Time elapsed: 0.128 s  <<< ERROR!
+java.lang.IllegalStateException: Configuration error: found multiple declarations of @BootstrapWith for test class [com.sodexo.msc.noticias.MscPersonalApplicationTests]: [@org.springframework.test.context.BootstrapWith(value=org.springframework.boot.test.context.SpringBootTestContextBootstrapper.class), @org.springframework.test.context.BootstrapWith(value=org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper.class)]
+

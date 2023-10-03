@@ -1,0 +1,13 @@
+com\sodexo\msc\noticias\MscNoticiasApplication.class
+com\sodexo\msc\noticias\config\SwaggerConfig.class
+com\sodexo\msc\noticias\utils\Constante.class
+com\sodexo\msc\noticias\models\response\NoticiasExternas.class
+com\sodexo\msc\noticias\config\JacksonConfig.class
+com\sodexo\msc\noticias\service\NoticiasService.class
+com\sodexo\msc\noticias\utils\Conversor.class
+com\sodexo\msc\noticias\controller\NoticiasController.class
+com\sodexo\msc\noticias\entity\NoticiaFavorita.class
+com\sodexo\msc\noticias\repository\NoticiasRepository.class
+com\sodexo\msc\noticias\config\RestTemplateConfig.class
+com\sodexo\msc\noticias\models\response\Respuesta.class
+com\sodexo\msc\noticias\exception\ExceptionHelper.class
